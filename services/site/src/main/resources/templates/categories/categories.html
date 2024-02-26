@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- favicon -->
+    <link rel="icon" type="image/svg+xml" href="/img/icons/svg/check-double-solid_dark.svg">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <meta name="description" content="CheckDev - пробные собеседования в IT.">
+    <title>categories</title>
+
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- fontawesome-free-6.3.0-web -->
+    <link th:href="@{/webjars/font-awesome/6.3.0/css/all.min.css}" rel="stylesheet">
+    <!-- Bootstrap 5.3.2 -->
+    <link th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}" rel="stylesheet">
+    <script th:src="@{/webjars/bootstrap/5.3.2/js/bootstrap.min.js}"></script>
+    <!-- Popper.js 2.11.7 -->
+    <script th:src="@{/webjars/popper.js/2.11.7/umd/popper.js}"></script>
+    <!-- Jquery.js 3.7.1 -->
+    <script th:src="@{/webjars/jquery/3.7.1/jquery.min.js}"></script>
+    <!-- Summernote 0.8.10 -->
+    <link th:href="@{/webjars/summernote/0.8.10/summernote-lite.css}" rel="stylesheet">
+    <script th:src="@{/webjars/summernote/0.8.10/summernote-lite.js}"></script>
+    <script th:src="@{/webjars/summernote/0.8.10/lang/summernote-ru-RU.js}"></script>
+</head>
+<body>
+<div th:insert="fragments/header :: header"></div>
+<div class="container" th:if="${categories != null}">
+    <div class="row">
+        <div class="cell">
+            <div th:if="${canManage}" class="col-md-12 pull-right">
+                <a th:href="@{/category/createForm}"
+                   class="btn mb-2 btn-primary" role="button" aria-pressed="true">
+                    Создать категорию
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="cell">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Категория</th>
+                    <th scope="col">Собеседования</th>
+                    <th th:if="${userDTO != null}" scope="col">Подписаться</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="category: ${categories}">
+                    <td>
+                        <div>
+                            <span>
+                                <a class="text-decoration-none text-dark h5"
+                                   th:href="@{|/topics/${category.id}|}"
+                                   th:text="${category.name}">
+                                </a>
+                            </span>
+                            <span>
+                                <a th:if="${canManage}"
+                                   class="text-decoration-none text-dark"
+                                   th:href="@{|/category/editForm/${category.id}/${category.name}|}">
+                                    <i class="fas fa-pencil-alt pl-3"></i>
+                                </a>
+                            </span>
+                        </div>
+                        <small class="mb-2 text-muted">
+                            <span><i class="fas fa-eye pr-3"></i> : </span>
+                            <span class="fw-bold" th:text="${category.total}"></span>
+                            <span class="mr-3">Тем : </span>
+                            <span class="fw-bold" th:text="${category.topicsSize}"></span>
+                            <span th:if="${canManage}" > |
+                                <span class="mr-3">Позиция : </span>
+                                <span class="fw-bold" th:text="${category.position}"></span>
+                            </span>
+                        </small>
+                    </td>
+                    <td>
+                        <span class="badge bg-success">Новых: 100</span>
+                    </td>
+                    <td th:if="${userDTO != null}">
+                        <a class="text-decoration-none text-dark" th:if="${!userDTO.subscribeCategoryIds.contains(category.id)}"
+                           th:href="@{|/notification/subscribeCategory/${userInfo.id}/${category.id}|}">
+                            <i class="far fa-bell" title="Подписаться на категорию"></i>
+                        </a>
+                        <a class="text-decoration-none text-dark" th:if="${userDTO.subscribeCategoryIds.contains(category.id)}"
+                           th:href="@{|/notification/unSubscribeCategory/${userInfo.id}/${category.id}|}">
+                            <i class="fa-regular fa-bell-slash"
+                               title="Вы подписаны на категорию"></i>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div th:insert="fragments/footer :: footer"></div>
+</body>
+</html>

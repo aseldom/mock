@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <meta name="description" content="CheckDev - пробные собеседования в IT.">
+    <title>registration</title>
+
+    <!-- favicon -->
+    <link rel="icon" type="image/svg+xml" href="/img/icons/svg/check-double-solid_dark.svg">
+
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- fontawesome-free-6.3.0-web -->
+    <link th:href="@{/webjars/font-awesome/6.3.0/css/all.min.css}" rel="stylesheet">
+    <!-- Bootstrap 5.3.2 -->
+    <link th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}" rel="stylesheet">
+    <script th:src="@{/webjars/bootstrap/5.3.2/js/bootstrap.min.js}"></script>
+    <!-- Popper.js 2.11.7 -->
+    <script th:src="@{/webjars/popper.js/2.11.7/umd/popper.js}"></script>
+    <!-- Jquery.js 3.7.1 -->
+    <script th:src="@{/webjars/jquery/3.7.1/jquery.min.js}"></script>
+    <!-- Summernote 0.8.10 -->
+    <link th:href="@{/webjars/summernote/0.8.10/summernote-lite.css}" rel="stylesheet">
+    <script th:src="@{/webjars/summernote/0.8.10/summernote-lite.js}"></script>
+    <script th:src="@{/webjars/summernote/0.8.10/lang/summernote-ru-RU.js}"></script>
+</head>
+<body>
+<div th:insert="fragments/header :: header"></div>
+<div class="container">
+    <div class="d-flex justify-content-center align-items-center h-100">
+        <div class="card mb-3" style="width: 35rem;">
+            <div class="card-header">
+                Как получить доступ?
+            </div>
+            <div class="card-body">
+                <p class="card-text">В проекте CheckDev мы активно используем телеграм.</p>
+                <p class="card-text">
+                    Чтобы начать обучение, добавьте бота @checkdev_bot<br>
+                    Отправьте боту сообщение:
+                </p>
+                <h5 class="card-title">/new</h5>
+                <p class="card-text">
+                    Далее введите ваш email адрес.<br>
+                    Например, ivan.ivanov@gmail.com<br>
+                    Бот пришлет логин и пароль для входа в систему.
+                </p>
+                <p class="card-text">
+                    Успешной учебы, Команда CheckDev.
+                </p>
+                <a th:href="@{https://t.me/checkdev_bot?start=true}" class="btn btn-primary">Открыть телеграм бота</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:insert="fragments/footer :: footer"></div>
+</body>
+</html>

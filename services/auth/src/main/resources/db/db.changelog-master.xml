@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <include file="changelog/01-create.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/02-update.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/03-update.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/04-update.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/05-update.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/06-update.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/07-update.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/08-create.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/09_dml_person_insert.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/010_ddl_person_add_column_created.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/011_dml_person_insert.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/012_ddl_alter_person_table_to_name_profile.xml" relativeToChangelogFile="true"/>
+</databaseChangeLog>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <property name="now" value="now()" dbms="postgresql"/>
+    <changeSet id="08" author="Max Ivanov">
+
+        <createTable tableName="template">
+            <column autoIncrement="true" name="id" type="int">
+                <constraints unique="true" nullable="false" primaryKey="true"/>
+            </column>
+            <column name="subject" type="varchar(2000)"/>
+            <column name="body" type="text"/>
+            <column name="type" type="varchar(2000)"/>
+        </createTable>
+        <createTable tableName="setting">
+            <column autoIncrement="true" name="id" type="int">
+                <constraints unique="true" nullable="false" primaryKey="true"/>
+            </column>
+            <column name="template" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="value" type="varchar(2000)"/>
+        </createTable>
+
+    </changeSet>
+</databaseChangeLog>

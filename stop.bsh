@@ -1,0 +1,24 @@
+#!/bin/bash
+
+if test -f "auth.pid"; then
+    kill -9 $(cat auth.pid)
+fi
+
+if test -f "desc.pid"; then
+    kill -9 $(cat desc.pid)
+fi
+
+if test -f "mock.pid"; then
+    kill -9 $(cat mock.pid)
+fi
+
+if test -f "notification.pid"; then
+    kill -9 $(cat notification.pid)
+fi
+
+if test -f "site.pid"; then
+    kill -9 $(cat site.pid)
+fi
+
+rm -f *.pid
+ps aux | grep 1.0.0.jar

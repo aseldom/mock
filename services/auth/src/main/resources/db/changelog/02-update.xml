@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <property name="now" value="now()" dbms="postgresql"/>
+    <changeSet id="02" author="Arsentev">
+
+        <addColumn schemaName="public"
+                   tableName="person">
+            <column name="privacy" type="boolean" defaultValueBoolean="true">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+
+        <createTable tableName="orders">
+            <column autoIncrement="true" name="id" type="int">
+                <constraints unique="true" nullable="false" primaryKey="true"/>
+            </column>
+            <column name="user_id" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar(2000)"/>
+            <column name="username" type="varchar(2000)"/>
+            <column name="msg" type="text"/>
+            <column name="created" type="timestamp" valueDate="${now}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="archive" type="boolean" defaultValueBoolean="false">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addColumn schemaName="public"
+                   tableName="person">
+            <column name="experience" type="int"/>
+        </addColumn>
+        <addColumn schemaName="public"
+                   tableName="person">
+            <column name="about_short" type="text"/>
+        </addColumn>
+        <addColumn schemaName="public"
+                   tableName="person">
+            <column name="about" type="text"/>
+        </addColumn>
+
+        <createTable tableName="photos">
+            <column autoIncrement="true" name="id" type="int">
+                <constraints unique="true" nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(50)"/>
+            <column name="photo" type="bytea"/>
+        </createTable>
+
+        <addColumn schemaName="public"
+                   tableName="person">
+            <column name="id_photo" type="int">
+                <constraints nullable="true" foreignKeyName="fk_photo_person" references="photos(id)"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="02" author="Hincu">
+        <addColumn schemaName="public"
+                   tableName="person">
+            <column name="show" type="boolean" defaultValueBoolean="false"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="03" author="Hincu">
+        <addColumn schemaName="public"
+                   tableName="person">
+            <column name="salary" type="varchar(20)"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

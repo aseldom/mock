@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- favicon -->
+    <link rel="icon" type="image/svg+xml" href="/img/icons/svg/check-double-solid_dark.svg">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <meta name="description" content="CheckDev - пробные собеседования в IT.">
+    <title>category/editForm/{id}/{name}</title>
+
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- fontawesome-free-6.3.0-web -->
+    <link th:href="@{/webjars/font-awesome/6.3.0/css/all.min.css}" rel="stylesheet">
+    <!-- Bootstrap 5.3.2 -->
+    <link th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}" rel="stylesheet">
+    <script th:src="@{/webjars/bootstrap/5.3.2/js/bootstrap.min.js}"></script>
+    <!-- Popper.js 2.11.7 -->
+    <script th:src="@{/webjars/popper.js/2.11.7/umd/popper.js}"></script>
+    <!-- Jquery.js 3.7.1 -->
+    <script th:src="@{/webjars/jquery/3.7.1/jquery.min.js}"></script>
+    <!-- Summernote 0.8.10 -->
+    <link th:href="@{/webjars/summernote/0.8.10/summernote-lite.css}" rel="stylesheet">
+    <script th:src="@{/webjars/summernote/0.8.10/summernote-lite.js}"></script>
+    <script th:src="@{/webjars/summernote/0.8.10/lang/summernote-ru-RU.js}"></script>
+</head>
+<body>
+<div th:insert="fragments/header :: header"></div>
+<div class="container">
+    <div class="row pt-2" th:if="${userInfo != null}">
+        <form th:action="@{/category/update/}" th:object="${category}" method="post">
+            <div class="form-group">
+                <input type="hidden" name="id" th:field="*{id}"/>
+                <label class="fw-bold" for="name">Название направления</label>
+                <input type="text" class="form-control mb-3 mt-2"
+                       id="name"
+                       name="name"
+                       th:field="*{name}"
+                       aria-describedby="emailHelp" placeholder="Название">
+                <label class="fw-bold" for="position">Позиция</label>
+                <input type="text" class="form-control mb-3 mt-2"
+                       id="position"
+                       name="position"
+                       th:field="*{position}"
+                       aria-describedby="emailHelp" placeholder="Позиция">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+            </div>
+        </form>
+    </div>
+</div>
+<br>
+<div th:insert="fragments/footer :: footer"></div>
+</body>
+</html>

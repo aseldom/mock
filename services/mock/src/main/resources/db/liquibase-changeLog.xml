@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <include file="changelog/001_ddl_create_table_interview.sql" relativeToChangelogFile="true"/>
+    <include file="changelog/002_ddl_create_table_wisher.sql" relativeToChangelogFile="true"/>
+    <include file="changelog/003_ddl_update_table_interview.sql" relativeToChangelogFile="true"/>
+    <include file="changelog/004_dml_insert_table_interview.sql" relativeToChangelogFile="true"/>
+    <include file="changelog/005_ddl_rename_column_interview.sql" relativeToChangelogFile="true"/>
+    <include file="changelog/006_ddl_add_column_interview.sql" relativeToChangelogFile="true"/>
+    <include file="changelog/007_dml_insert_table_interview.sql" relativeToChangelogFile="true"/>
+    <include file="changelog/008_ddl_add_column_status_in_wiser_table.sql" relativeToChangelogFile="true"/>
+    <include file="changelog/009_dml_set_table_interview_topicId_notNull.sql" relativeToChangelogFile="true"/>
+    <include file="changelog/010_ddl_create_table_cd_filter.sql" relativeToChangelogFile="true"/>
+    <include file="changelog/011_ddl_rename_column_type_interview_to_mode_from_table_interviews.sql" relativeToChangelogFile="true"/>
+    <include file="changelog/012_ddl_add_column_status_int_from_interview_table.sql" relativeToChangelogFile="true"/>
+    <include file="changelog/013_ddl_create_table_cd_feedback.sql" relativeToChangelogFile="true"/>
+    <include file="changelog/014_dml_update_table_interview.sql" relativeToChangelogFile="true"/>
+    <include file="changelog/015_ddl_add_constraint_table_interview.sql" relativeToChangelogFile="true"/>
+    <include file="changelog/016_ddl_add_constraint_table_wisher.sql" relativeToChangelogFile="true"/>
+</databaseChangeLog>

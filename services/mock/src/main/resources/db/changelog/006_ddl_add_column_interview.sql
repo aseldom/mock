@@ -1,0 +1,2 @@
+ALTER TABLE IF EXISTS interview
+    ADD COLUMN IF NOT EXISTS topic_id INT;

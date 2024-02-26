@@ -1,0 +1,21 @@
+#!/bin/bash
+
+export JAVA_HOME=/root/jdk-18.0.1.1
+export PATH=$JAVA_HOME/bin:$PATH
+
+export SPRING_CONFIG_LOCATION=./etc/auth.properties
+nohup java -jar services/auth/target/auth-1.0.0.jar > /dev/null 2>&1&
+
+export SPRING_CONFIG_LOCATION=./etc/desc.properties
+nohup java -jar services/desc/target/desc-1.0.0.jar > /dev/null 2>&1&
+
+export SPRING_CONFIG_LOCATION=./etc/mock.properties
+nohup java -jar services/mock/target/mock-1.0.0.jar > /dev/null 2>&1&
+
+export SPRING_CONFIG_LOCATION=./etc/notification.properties
+nohup java -jar services/notification/target/notification-1.0.0.jar > /dev/null 2>&1&
+
+export SPRING_CONFIG_LOCATION=./etc/site.properties
+nohup java -jar services/site/target/site-1.0.0.jar > /dev/null 2>&1&
+
+ps aux | grep services

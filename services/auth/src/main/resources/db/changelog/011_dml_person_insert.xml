@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="11" author="Arcady555">
+        <insert tableName="person">
+            <column name="username" value="junior"/>
+            <column name="email" value="junior@checkdev.ru"/>
+            <column name="password" value="$2a$10$4bi7xA4O3G2Aj0fZFE2TC.3M0oeaHuP2d3podAVKCiWmbGG/xLYlK"/>
+            <column name="active" value="true"/>
+        </insert>
+        <insert tableName="person">
+            <column name="username" value="middle"/>
+            <column name="email" value="middle@checkdev.ru"/>
+            <column name="password" value="$2a$10$iDo6ctGb0lXdJZcy7ADhdeSGJgDMu8ZavhH18Kqf6L9qT.8Lu1ljq"/>
+            <column name="active" value="true"/>
+        </insert>
+        <insert tableName="person">
+            <column name="username" value="senior"/>
+            <column name="email" value="senior@checkdev.ru"/>
+            <column name="password" value="$2a$10$eOII9/cMpuvdzh.nAOOaSusN/VgmcfgZWEMFdGo.AL2Oj/MVR1M6C"/>
+            <column name="active" value="true"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

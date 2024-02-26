@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="06" author="Arcady555">
+        <update tableName="cd_category">
+            <column name="position" value="3" />
+            <where> name = 'Java Base'</where>
+        </update>
+        <insert tableName="cd_category">
+            <column name="name" value="Java Core"/>
+            <column name="position" value="7"/>
+        </insert>
+        <insert tableName="cd_category">
+            <column name="name" value="Spring"/>
+            <column name="position" value="9"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

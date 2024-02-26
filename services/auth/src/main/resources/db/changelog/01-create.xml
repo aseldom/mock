@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <property name="now" value="now()" dbms="postgresql"/>
+    <changeSet id="01" author="Arsentev">
+
+        <createTable tableName="person">
+            <column autoIncrement="true" name="id" type="int">
+                <constraints unique="true" nullable="false" primaryKey="true"/>
+            </column>
+            <column name="username" type="varchar(2000)"/>
+            <column name="email" type="varchar(2000)">
+                <constraints unique="true"/>
+            </column>
+            <column name="password" type="varchar(2000)"/>
+            <column name="key" type="varchar(2000)"/>
+            <column name="active" type="boolean" defaultValueBoolean="false"/>
+        </createTable>
+
+        <createTable tableName="role">
+            <column autoIncrement="true" name="id" type="int">
+                <constraints unique="true" nullable="false" primaryKey="true"/>
+            </column>
+            <column name="value" type="varchar(200)"/>
+        </createTable>
+
+        <createTable tableName="person_role">
+            <column autoIncrement="true" name="id" type="int">
+                <constraints unique="true" nullable="false" primaryKey="true"/>
+            </column>
+            <column name="person_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_person_role_person" references="person(id)"/>
+            </column>
+            <column name="role_id" type="int">
+                <constraints nullable="false" foreignKeyName="person_role_role" references="role(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- favicon -->
+    <link rel="icon" type="image/svg+xml" href="/img/icons/svg/check-double-solid_dark.svg">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <meta name="description" content="CheckDev - пробные собеседования в IT.">
+    <title>persons/edit</title>
+
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- fontawesome-free-6.3.0-web -->
+    <link th:href="@{/webjars/font-awesome/6.3.0/css/all.min.css}" rel="stylesheet">
+    <!-- Bootstrap 5.3.2 -->
+    <link th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}" rel="stylesheet">
+    <script th:src="@{/webjars/bootstrap/5.3.2/js/bootstrap.min.js}"></script>
+    <!-- Popper.js 2.11.7 -->
+    <script th:src="@{/webjars/popper.js/2.11.7/umd/popper.js}"></script>
+    <!-- Jquery.js 3.7.1 -->
+    <script th:src="@{/webjars/jquery/3.7.1/jquery.min.js}"></script>
+    <!-- Summernote 0.8.10 -->
+    <link th:href="@{/webjars/summernote/0.8.10/summernote-lite.css}" rel="stylesheet">
+    <script th:src="@{/webjars/summernote/0.8.10/summernote-lite.js}"></script>
+    <script th:src="@{/webjars/summernote/0.8.10/lang/summernote-ru-RU.js}"></script>
+</head>
+<body>
+<div th:insert="fragments/header :: header"></div>
+<div class="container">
+    <div class="row">
+        <div class="card" style="width: 100%">
+            <div class="card-header">
+                Редактирование пользователя
+            </div>
+            <div class="card-body">
+                <form th:action="@{/persons/edit}" method="POST" th:object="${personDto}" enctype="multipart/form-data">
+                    <input type="hidden" name="id" th:field="*{id}">
+                    <input type="hidden" name="photo" th:field="*{photo.id}">
+                    <div class="row mb-3">
+                        <div class="col-3">
+                            <!--Photo view-->
+                            <div class="mb-3">
+                                <img th:if="${photoId>0}"
+                                     th:src="@{/photo/{id}(id=${photoId})}" class="w-100"
+                                     alt="No image">
+                            </div>
+                            <!--Photo load-->
+                            <div class="mb-3">
+                                <div th:if="${not #lists.isEmpty(errorMessage)}" class="alert alert-danger"
+                                     role="alert">
+                                    <span th:text="${errorMessage}"></span>
+                                </div>
+                                <label for="formFile" class="form-label">изображение формата jpeg.</label>
+                                <input class="form-control form-control-sm w-100"
+                                       type="file" accept="image/jpeg"
+                                       id="formFile" name="file">
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <!--Username-->
+                            <div class="mb-3">
+                                <label for="username" class="form-label"><b>ФИО</b></label>
+                                <input type="text" class="form-control" id="username" name="username"
+                                       th:field="*{username}">
+                            </div>
+                            <!--Email-->
+                            <div class="mb-3">
+                                <label class="form-label" for="email"><b>Email</b></label>
+                                <input class="form-control" id="email" name="username" placeholder="Email"
+                                       th:field="*{email}"
+                                       type="email">
+                            </div>
+                            <!--Experience-->
+                            <div class="mb-3">
+                                <label class="form-label" for="experience"><b>Опыт</b></label>
+                                <textarea class="form-control"
+                                          id="experience"
+                                          name="experience" placeholder="Опыт" rows="5"
+                                          th:field="*{experience}"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="salary"><b>Ожидаемый доход</b></label>
+                                <input class="form-control" id="salary" name="salary" th:field="*{salary}" type="text">
+                            </div>
+                            <div class="mb-3">
+                                <label for="location"><b>Город</b></label>
+                                <input class="form-control" id="location" name="location" placeholder="Город"
+                                       th:field="*{location}" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <!--Отмена-->
+                    <a class="btn btn-secondary mt-3"
+                       th:href="@{/}">Отмена</a>
+                    <!--Обновить инцидент-->
+                    <button class="btn btn-success mt-3" type="submit">Обновить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:insert="fragments/footer :: footer"></div>
+</body>
+</html>

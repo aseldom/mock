@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- favicon -->
+    <link rel="icon" type="image/svg+xml" href="/img/icons/svg/check-double-solid_dark.svg">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <meta name="description" content="CheckDev - пробные собеседования в IT.">
+    <title>index</title>
+
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- fontawesome-free-6.3.0-web -->
+    <link th:href="@{/webjars/font-awesome/6.3.0/css/all.min.css}" rel="stylesheet">
+    <!-- Bootstrap 5.3.2 -->
+    <link th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}" rel="stylesheet">
+    <script th:src="@{/webjars/bootstrap/5.3.2/js/bootstrap.min.js}"></script>
+    <!-- Popper.js 2.11.7 -->
+    <script th:src="@{/webjars/popper.js/2.11.7/umd/popper.js}"></script>
+    <!-- Jquery.js 3.7.1 -->
+    <script th:src="@{/webjars/jquery/3.7.1/jquery.min.js}"></script>
+    <!-- Summernote 0.8.10 -->
+    <link th:href="@{/webjars/summernote/0.8.10/summernote-lite.css}" rel="stylesheet">
+    <script th:src="@{/webjars/summernote/0.8.10/summernote-lite.js}"></script>
+    <script th:src="@{/webjars/summernote/0.8.10/lang/summernote-ru-RU.js}"></script>
+</head>
+<body>
+
+<div th:insert="fragments/header :: header"></div>
+<div class="container">
+    <div class="row pt-3">
+        <div class="cell">
+            <form class="needs-validation" th:action="@{/interview/createFeedback}" method="post">
+                <!--ID собеседования-->
+                <input type="hidden" id="interviewId" name="interviewId" th:value="*{interview.id}">
+                <!--ID авторизованного пользователя-->
+                <input type="hidden" id="userId" name="userId" th:value="*{userInfo.id}">
+                <!--Форма ввода текста отзыва собеседования textFeedback-->
+                <div class="mb-3">
+                    <label class="form-label h3" for="textFeedback">Отзыв собеседования</label>
+                    <textarea class="form-control" rows="3"
+                              id="textFeedback"
+                              name="textFeedback" required></textarea>
+                </div>
+                <!--Check бокс выбора оценки собеседования поле scope значение от 0 до 5-->
+                <div class="h4">
+                    Оценка собеседования
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" id="scope0" name="scope" value="0" required>
+                    <label class="form-check-label" for="scope0">0</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" id="scope1" name="scope" value="1" required>
+                    <label class="form-check-label" for="scope1">1</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" id="scope2" name="scope" value="2" required>
+                    <label class="form-check-label" for="scope2">2</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" id="scope3" name="scope" value="3" required>
+                    <label class="form-check-label" for="scope3">3</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" id="scope4" name="scope" value="4" required>
+                    <label class="form-check-label" for="scope4">4</label>
+                </div>
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="radio" id="scope5" name="scope" value="5" required>
+                    <label class="form-check-label" for="scope5">5</label>
+                </div>
+                <div class="form-group m3">
+                    <button type="submit" class="btn btn-primary">Отправить отзыв</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div th:insert="fragments/footer :: footer"></div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <property name="now" value="now()" dbms="postgresql"/>
+    <changeSet id="012" author="Novoselov">
+        <renameTable
+                newTableName="profile"
+                oldTableName="person"
+                schemaName="public"/>
+        <renameTable
+                newTableName="profile_role"
+                oldTableName="person_role"
+                schemaName="public"/>
+        <renameColumn tableName="profile_role"
+                      oldColumnName="person_id"
+                      newColumnName="profile_id"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="07" author="Arcady555">
+        <insert tableName="cd_topic">
+            <column name="category_id" value = "1"/>
+            <column name="name" value="Базовый синтаксис"/>
+            <column name="text" value="Типы данных, простейшие операции с данными, условные операторы, циклы и массивы"/>
+            <column name="created" value= "now()" />
+            <column name="position" value="33"/>
+        </insert>
+        <insert tableName="cd_topic">
+            <column name="category_id" valueComputed = "1"/>
+            <column name="name" value="ООП"/>
+            <column name="text" value="Классы и объекты, наследование, инкапсуляция, полиморфизм"/>
+            <column name="created" value="now()" />
+            <column name="position" value="35"/>
+        </insert>
+        <insert tableName="cd_topic">
+            <column name="category_id" valueComputed = "1"/>
+            <column name="name" value="Коллекции"/>
+            <column name="text" value="Первое знакомство со структурами данных"/>
+            <column name="created" value="now()" />
+            <column name="position" value="37"/>
+        </insert>
+        <insert tableName="cd_topic">
+            <column name="category_id" valueComputed = "2"/>
+            <column name="name" value="Структуры данных и алгоритмы"/>
+            <column name="text" value="Углубленное изучение"/>
+            <column name="created" value="now()" />
+            <column name="position" value="73"/>
+        </insert>
+        <insert tableName="cd_topic">
+            <column name="category_id" valueComputed = "2"/>
+            <column name="name" value="JDBC"/>
+            <column name="text" value="Начало работы с базами данных"/>
+            <column name="created" value="now()" />
+            <column name="position" value="75"/>
+        </insert>
+        <insert tableName="cd_topic">
+            <column name="category_id" valueComputed = "2"/>
+            <column name="name" value="Сборщики мусора"/>
+            <column name="text" value="Java механизм удаления ненужных объектов"/>
+            <column name="created" value="now()" />
+            <column name="position" value="77"/>
+        </insert>
+        <insert tableName="cd_topic">
+            <column name="category_id" valueComputed = "3"/>
+            <column name="name" value="MVC"/>
+            <column name="text" value="Построение пользовательского интерфейса"/>
+            <column name="created" value="now()" />
+            <column name="position" value="93"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
