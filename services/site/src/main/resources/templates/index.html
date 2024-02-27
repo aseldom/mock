@@ -64,7 +64,7 @@
                                         <i class="far fa-clock"></i>
                                         <span th:text="${#strings.substring(interview.createDate, 0, 10)}"></span>
                                         <i class="far fa-user"></i>
-                                        <span>ФИО пользователя</span>
+                                        <span th:text="${interview.contactBy}"></span>
                                     </span>
                                 </div>
                             </td>
