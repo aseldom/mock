@@ -61,7 +61,7 @@ class CategoryControlTest {
     @Test
     void whenPostCreateCategoryThenReturnRedirectView() throws Exception {
         var token = "1234";
-        var categoryDTO = new CategoryDTO(0, "name", 1, 1, 1);
+        var categoryDTO = new CategoryDTO(0, "name", 1, 1, 1, 0);
         when(categoriesService.create(token, categoryDTO)).thenReturn(categoryDTO);
         mockMvc.perform(post("/category/")
                         .requestAttr("category", categoryDTO)
@@ -98,7 +98,7 @@ class CategoryControlTest {
     @Test
     void whenPostUpdateCategoryThenReturnRedirectCategories() throws Exception {
         var token = "1234";
-        var categoryDTO = new CategoryDTO(1, "name", 1, 1, 1);
+        var categoryDTO = new CategoryDTO(1, "name", 1, 1, 1, 0);
         mockMvc.perform(post("/category/update")
                         .sessionAttr("token", token)
                         .requestAttr("category", categoryDTO))

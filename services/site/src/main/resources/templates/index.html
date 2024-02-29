@@ -101,11 +101,13 @@
                                     <span class="fw-bold" th:text="${category.total}"></span>
                                     <span class="mr-3">Тем : </span>
                                     <span class="fw-bold" th:text="${category.topicsSize}"></span>
-                                    </span>
                                 </small>
                             </td>
                             <td>
-                                <span class="badge bg-success">Новых: 100</span>
+                                <div class="badge bg-success">
+                                    <span>Новых:</span>
+                                    <span th:text="${category.getNewTopicSize()}"></span>
+                                </div>
                             </td>
                         </tr>
                         </tbody>
