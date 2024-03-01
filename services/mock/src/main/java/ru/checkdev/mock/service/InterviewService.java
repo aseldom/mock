@@ -65,6 +65,10 @@ public class InterviewService {
                 .collect(Collectors.toList());
     }
 
+    public List<Interview> findByStatus(int status) {
+        return interviewRepository.findByStatus(status);
+    }
+
     public Page<Interview> findByTopicId(int topicId, int page, int size) {
         return interviewRepository.findByTopicId(topicId, PageRequest.of(page, size));
     }

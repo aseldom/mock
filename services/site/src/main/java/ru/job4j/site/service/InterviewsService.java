@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import ru.job4j.site.dto.InterviewDTO;
 import ru.job4j.site.util.RestPageImpl;
 
-import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -29,6 +28,14 @@ public class InterviewsService {
 
     public List<InterviewDTO> getByType(int type) throws JsonProcessingException {
         var text = new RestAuthCall(String.format("http://localhost:9912/interviews/%d", type))
+                .get();
+        var mapper = new ObjectMapper();
+        return mapper.readValue(text, new TypeReference<>() {
+        });
+    }
+
+    public List<InterviewDTO> getByStatus(int status) throws JsonProcessingException {
+        var text = new RestAuthCall(String.format("http://localhost:9912/interviews/findByStatus/%d", status))
                 .get();
         var mapper = new ObjectMapper();
         return mapper.readValue(text, new TypeReference<>() {

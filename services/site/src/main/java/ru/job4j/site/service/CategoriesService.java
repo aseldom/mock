@@ -85,7 +85,7 @@ public class CategoriesService {
     }
 
     private List<CategoryDTO> setNewInterviewNumber(List<CategoryDTO> categoryDTOList) throws JsonProcessingException {
-        List<InterviewDTO> interviewDTOList = interviewsService.getByType(StatusInterview.IS_NEW.getId());
+        List<InterviewDTO> interviewDTOList = interviewsService.getByStatus(StatusInterview.IS_NEW.getId());
         for (CategoryDTO categoryDTO : categoryDTOList) {
             long count = 0;
             for (TopicDTO topicDTO : topicsService.getByCategory(categoryDTO.getId())) {
