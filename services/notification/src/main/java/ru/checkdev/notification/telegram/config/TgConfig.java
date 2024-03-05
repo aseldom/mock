@@ -52,7 +52,7 @@ public class TgConfig {
      * @param object Object or Person(Auth)
      * @return Map
      */
-    public Map<String, String> getObjectToMap(Object object) {
+    public Map<String, Map> getObjectToMap(Object object) {
         return MAPPER.convertValue(object, Map.class);
     }
 }
