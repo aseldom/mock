@@ -1,7 +1,11 @@
 package ru.checkdev.notification.telegram;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.BotApiMethod;
+import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import ru.checkdev.notification.telegram.action.Action;
@@ -21,6 +25,7 @@ public class BotMenu extends TelegramLongPollingBot {
     private final Map<String, Action> actions;
     private final String username;
     private final String token;
+    private final String inputError = "Введена неверная команда";
 
 
     public BotMenu(Map<String, Action> actions, String username, String token) throws TelegramApiException {
@@ -45,13 +50,15 @@ public class BotMenu extends TelegramLongPollingBot {
             var key = update.getMessage().getText();
             var chatId = update.getMessage().getChatId().toString();
             if (actions.containsKey(key)) {
-                var msg = actions.get(key).handle(update.getMessage());
                 bindingBy.put(chatId, key);
+                var msg = actions.get(key).handle(update.getMessage(), bindingBy);
                 send(msg);
             } else if (bindingBy.containsKey(chatId)) {
                 var msg = actions.get(bindingBy.get(chatId)).callback(update.getMessage());
                 bindingBy.remove(chatId);
                 send(msg);
+            } else {
+                send(new SendMessage(chatId, inputError));
             }
         }
     }

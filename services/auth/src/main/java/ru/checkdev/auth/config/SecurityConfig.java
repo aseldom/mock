@@ -32,6 +32,7 @@ public class SecurityConfig {
                 "/person/by",
                 "/person/random",
                 "/person/resume/**",
+                "/person/**",
                 "/order/save",
                 "/person/by/email",
                 "/img",

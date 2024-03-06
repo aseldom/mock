@@ -34,7 +34,7 @@ public class RegAction implements Action {
     private final String urlSiteAuth;
 
     @Override
-    public BotApiMethod<Message> handle(Message message) {
+    public BotApiMethod<Message> handle(Message message, Map<String, String> bindingBy) {
         String text;
         String chatId = message.getChatId().toString();
         TelegramUser telegramUser = telegramUserService.findByChatId(message.getChatId().intValue());
@@ -91,8 +91,7 @@ public class RegAction implements Action {
             return new SendMessage(chatId, text);
         }
 
-        var pers = mapObject.get("person");
-        int userId = (int) pers.get("id");
+        int userId = (int) mapObject.get("person").get("id");
 
         telegramUserService.save(new TelegramUser(0, userId, Integer.parseInt(chatId)));
 

@@ -10,6 +10,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 import ru.checkdev.notification.service.TelegramUserService;
 import ru.checkdev.notification.telegram.action.Action;
+import ru.checkdev.notification.telegram.action.CheckAction;
 import ru.checkdev.notification.telegram.action.InfoAction;
 import ru.checkdev.notification.telegram.action.RegAction;
 import ru.checkdev.notification.telegram.service.TgAuthCallWebClint;
@@ -39,6 +40,8 @@ public class TgRun {
     private String token;
     @Value("${server.site.url.login}")
     private String urlSiteAuth;
+    @Value("${server.site.url.person}")
+    private String urlSitePerson;
 
     @Bean
     public void initTg() {
@@ -50,8 +53,8 @@ public class TgRun {
                         "/forget - восстановление пароля",
                         "/subscribe - подписка, через ввод логина и пароля",
                         "/unsubscribe - отписка, через проверку в chatId")),
-                "/new", new RegAction(telegramUserService, tgAuthCallWebClint, urlSiteAuth)
-//                "/check", new CheckAction(thCallWebClint, urlSiteAuth),
+                "/new", new RegAction(telegramUserService, tgAuthCallWebClint, urlSiteAuth),
+                "/check", new CheckAction(telegramUserService, tgAuthCallWebClint, urlSitePerson)
 //                "/forget", new ForgetAction(tgAuthCallWebClint, urlSiteAuth),
 //                "/subscribe", new SubscribeAction(tgAuthCallWebClint, urlSiteAuth),
 //                "/unsubscribe", new UnsubscribeAction(tgAuthCallWebClint, urlSiteAuth)
