@@ -64,10 +64,20 @@ public class PersonController {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/{id}")
     public ResponseEntity<HashMap<String, Object>> get(@PathVariable int id, Principal user) throws ServletException {
-        HashMap<String, Object> data = new HashMap<String, Object>();
+        HashMap<String, Object> data = new HashMap<>();
         data.put("person", this.persons.findById(id));
         data.put("roles", this.roles.findAll());
         return new ResponseEntity<>(data, HttpStatus.OK);
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PostMapping("/change_password/{id}")
+    public ResponseEntity<?> changePassword(@RequestBody Profile p, @PathVariable int id) throws ServletException {
+        String password = p.getPassword();
+        Profile profile = this.persons.findById(id);
+        profile.setPassword(encoding.encode(password));
+        this.persons.save(profile);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/profile")

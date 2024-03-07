@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import ru.checkdev.notification.domain.PersonDTO;
 
 import java.util.Calendar;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -47,9 +48,10 @@ class TgConfigTest {
     @Test
     void whenGetObjectToMapThenReturnObjectMap() {
         var personDto = new PersonDTO("mail", "pass", true, null, Calendar.getInstance());
-        var map = tgConfig.getObjectToMap(personDto);
-        assertThat(map.get("email")).isEqualTo(personDto.getEmail());
-        assertThat(map.get("password")).isEqualTo(personDto.getPassword());
-        assertThat(String.valueOf(map.get("privacy"))).isEqualTo(String.valueOf(true));
+        var personMap = Map.of("person", personDto);
+        var map = tgConfig.getObjectToMap((Object) personMap);
+        assertThat(map.get("person").get("email")).isEqualTo(personDto.getEmail());
+        assertThat(map.get("person").get("password")).isEqualTo(personDto.getPassword());
+        assertThat(String.valueOf(map.get("person").get("privacy"))).isEqualTo(String.valueOf(true));
     }
 }

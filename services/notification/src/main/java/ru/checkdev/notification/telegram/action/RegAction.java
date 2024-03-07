@@ -39,9 +39,7 @@ public class RegAction implements Action {
         String chatId = message.getChatId().toString();
         TelegramUser telegramUser = telegramUserService.findByChatId(message.getChatId().intValue());
         if (telegramUser != null) {
-            text = "Для Вашего аккаунта уже выполнена регистрация."
-                    + sl
-                    + "/start";
+            text = String.format("Для Вашего аккаунта регистрация уже выполнена. %s/start", sl);
             return new SendMessage(chatId, text);
         }
         text = "Введите email для регистрации:";

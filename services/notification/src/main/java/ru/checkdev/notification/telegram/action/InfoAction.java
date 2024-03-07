@@ -30,6 +30,7 @@ public class InfoAction implements Action {
         for (String action : actions) {
             out.append(action).append(sl);
         }
+        bindingBy.remove(chatId);
         return new SendMessage(chatId, out.toString());
     }
 
