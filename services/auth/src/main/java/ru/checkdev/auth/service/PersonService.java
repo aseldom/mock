@@ -310,4 +310,13 @@ public class PersonService {
         emptyNames.addAll(Arrays.asList(extra));
         return emptyNames;
     }
+
+    public boolean checkPerson(Profile profile) {
+        Profile user = persons.findByEmail(profile.getEmail());
+        if (user == null) {
+            return false;
+        }
+        return this.encoding.matches(profile.getPassword(), user.getPassword());
+    }
+
 }

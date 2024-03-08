@@ -21,4 +21,5 @@
     <include file="changelog/014_dml_update_table_interview.sql" relativeToChangelogFile="true"/>
     <include file="changelog/015_ddl_add_constraint_table_interview.sql" relativeToChangelogFile="true"/>
     <include file="changelog/016_ddl_add_constraint_table_wisher.sql" relativeToChangelogFile="true"/>
+    <include file="changelog/017_ddl_create_table_subscribe.sql" relativeToChangelogFile="true"/>
 </databaseChangeLog>

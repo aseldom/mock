@@ -54,8 +54,9 @@ public class BotMenu extends TelegramLongPollingBot {
                 var msg = actions.get(key).handle(update.getMessage(), bindingBy);
                 send(msg);
             } else if (bindingBy.containsKey(chatId)) {
-                var msg = actions.get(bindingBy.get(chatId)).callback(update.getMessage());
+                Action action = actions.get((bindingBy.get(chatId)));
                 bindingBy.remove(chatId);
+                var msg = action.callback(update.getMessage(), bindingBy);
                 send(msg);
             } else {
                 send(new SendMessage(chatId, inputError));

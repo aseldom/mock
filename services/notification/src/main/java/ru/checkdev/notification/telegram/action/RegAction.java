@@ -59,7 +59,7 @@ public class RegAction implements Action {
      * @return BotApiMethod<Message>
      */
     @Override
-    public BotApiMethod<Message> callback(Message message) {
+    public BotApiMethod<Message> callback(Message message, Map<String, String> bindingBy) {
         var chatId = message.getChatId().toString();
         var email = message.getText();
         var text = "";

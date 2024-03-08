@@ -26,6 +26,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers("/feedback/", "feedback/**")
                 .permitAll()
+                .antMatchers("/subscribe")
+                .permitAll()
                 .and()
                 .csrf()
                 .disable();

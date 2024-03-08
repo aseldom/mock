@@ -55,7 +55,7 @@ public class ForgetAction implements Action {
     }
 
     @Override
-    public BotApiMethod<Message> callback(Message message) {
+    public BotApiMethod<Message> callback(Message message, Map<String, String> bindingBy) {
         return null;
     }
 
@@ -63,4 +63,5 @@ public class ForgetAction implements Action {
         bindingBy.remove(chatId);
         return new SendMessage(chatId, out);
     }
+    
 }

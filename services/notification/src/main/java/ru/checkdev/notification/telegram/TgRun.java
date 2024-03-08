@@ -11,6 +11,7 @@ import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 import ru.checkdev.notification.service.TelegramUserService;
 import ru.checkdev.notification.telegram.action.*;
 import ru.checkdev.notification.telegram.service.TgAuthCallWebClint;
+import ru.checkdev.notification.telegram.service.TgMockCallWebClint;
 
 import java.util.List;
 import java.util.Map;
@@ -30,6 +31,7 @@ import java.util.Map;
 public class TgRun {
 
     private final TgAuthCallWebClint tgAuthCallWebClint;
+    private final TgMockCallWebClint tgMockCallWebClint;
     private final TelegramUserService telegramUserService;
     @Value("${tg.username}")
     private String username;
@@ -54,8 +56,8 @@ public class TgRun {
                         "/unsubscribe - отписка, через проверку в chatId")),
                 "/new", new RegAction(telegramUserService, tgAuthCallWebClint, urlSiteAuth),
                 "/check", new CheckAction(telegramUserService, tgAuthCallWebClint, urlSitePerson),
-                "/forget", new ForgetAction(telegramUserService, tgAuthCallWebClint, urlSiteChangePassword)
-//                "/subscribe", new SubscribeAction(tgAuthCallWebClint, urlSiteAuth),
+                "/forget", new ForgetAction(telegramUserService, tgAuthCallWebClint, urlSiteChangePassword),
+                "/subscribe", new SubscribeAction(telegramUserService, tgAuthCallWebClint, tgMockCallWebClint)
 //                "/unsubscribe", new UnsubscribeAction(tgAuthCallWebClint, urlSiteAuth)
         );
         try {

@@ -16,5 +16,5 @@ import java.util.Map;
 public interface Action {
     BotApiMethod<Message> handle(Message message, Map<String, String> bindingBy);
 
-    BotApiMethod<Message> callback(Message message);
+    BotApiMethod<Message> callback(Message message, Map<String, String> bindingBy);
 }

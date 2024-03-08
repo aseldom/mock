@@ -6,6 +6,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.StandardPasswordEncoder;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +30,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/person")
 public class PersonController {
-    private final StandardPasswordEncoder encoding = new StandardPasswordEncoder();
+    private final PasswordEncoder encoding = new BCryptPasswordEncoder();
     private final PersonService persons;
     private final RoleService roles;
 
@@ -157,4 +159,10 @@ public class PersonController {
         map.put("getTotal", persons.showed());
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
+
+    @PostMapping("/check")
+    public ResponseEntity<Boolean> checkPerson(@RequestBody Profile profile) {
+        return new ResponseEntity<>(persons.checkPerson(profile), HttpStatus.OK);
+    }
+
 }
