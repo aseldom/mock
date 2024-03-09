@@ -6,8 +6,6 @@ import org.springframework.stereotype.Service;
 import ru.checkdev.mock.domain.Subscribe;
 import ru.checkdev.mock.repository.SubscribeRepository;
 
-import java.util.Optional;
-
 @Service
 @Slf4j
 @AllArgsConstructor
@@ -16,14 +14,10 @@ public class SubscribeService {
     private final SubscribeRepository subscribeRepository;
 
     public Subscribe save(Subscribe subscribe) {
-        try {
-            return subscribeRepository.save(subscribe);
-        } catch (Exception e) {
-            return null;
-        }
+        return subscribeRepository.save(subscribe);
     }
 
-    public boolean delete(long chatId) {
+    public int deleteByChatId(long chatId) {
         return subscribeRepository.deleteByChatId(chatId);
     }
 

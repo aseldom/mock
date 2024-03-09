@@ -15,7 +15,7 @@ import java.util.Map;
 
 /**
  * 3. Мидл
- * Класс реализует вывод доступных команд телеграмм бота
+ * Класс реализует восстановление пароля
  *
  * @author Alexaner
  * @since 03.03.2024
@@ -63,5 +63,4 @@ public class ForgetAction implements Action {
         bindingBy.remove(chatId);
         return new SendMessage(chatId, out);
     }
-    
 }

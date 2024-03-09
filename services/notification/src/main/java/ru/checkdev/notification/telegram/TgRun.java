@@ -43,6 +43,10 @@ public class TgRun {
     private String urlSitePerson;
     @Value("${server.site.url.change.password}")
     private String urlSiteChangePassword;
+    @Value("${url.user.check}")
+    private String urlUserCheck;
+    @Value("${url.user.subscribe}")
+    private String urlUserSubscribe;
 
     @Bean
     public void initTg() {
@@ -57,8 +61,8 @@ public class TgRun {
                 "/new", new RegAction(telegramUserService, tgAuthCallWebClint, urlSiteAuth),
                 "/check", new CheckAction(telegramUserService, tgAuthCallWebClint, urlSitePerson),
                 "/forget", new ForgetAction(telegramUserService, tgAuthCallWebClint, urlSiteChangePassword),
-                "/subscribe", new SubscribeAction(telegramUserService, tgAuthCallWebClint, tgMockCallWebClint)
-//                "/unsubscribe", new UnsubscribeAction(tgAuthCallWebClint, urlSiteAuth)
+                "/subscribe", new SubscribeAction(telegramUserService, tgAuthCallWebClint, tgMockCallWebClint, urlUserCheck, urlUserSubscribe),
+                "/unsubscribe", new UnsubscribeAction(tgMockCallWebClint, urlUserSubscribe)
         );
         try {
             BotMenu menu = new BotMenu(actionMap, username, token);

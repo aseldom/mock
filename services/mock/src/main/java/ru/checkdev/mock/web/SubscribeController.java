@@ -6,12 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.checkdev.mock.domain.Subscribe;
-import ru.checkdev.mock.dto.FeedbackDTO;
-import ru.checkdev.mock.service.FeedbackService;
 import ru.checkdev.mock.service.SubscribeService;
-
-import java.util.List;
-import java.util.Optional;
 
 /**
  * SubscribeController rest controller для работы с подпиской
@@ -27,18 +22,16 @@ public class SubscribeController {
 
     private final SubscribeService service;
 
-    @PostMapping("")
+    @PostMapping
     public ResponseEntity<Object> subscribe(@RequestBody long chatId) {
         Subscribe result = service.save(new Subscribe(0, chatId));
         return new ResponseEntity<>(result, HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/")
-    public ResponseEntity<Boolean> unsubscribe(@RequestBody long chatId) {
-        boolean result = service.delete(chatId);
-        return new ResponseEntity<>(
-                result,
-                result ? HttpStatus.OK : HttpStatus.CONFLICT);
+    @DeleteMapping("/{chatId}")
+    public ResponseEntity<Integer> unsubscribe(@PathVariable long chatId) {
+        int res = service.deleteByChatId(chatId);
+        return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
 }
