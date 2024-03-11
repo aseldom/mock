@@ -4,7 +4,7 @@
 package ru.checkdev.notification.service;
 
 import com.google.common.collect.Lists;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.checkdev.notification.config.MailConfiguration;
 import ru.checkdev.notification.domain.Notify;
@@ -20,18 +20,12 @@ import java.util.Optional;
  * @since 24.12.2016
  */
 @Service
+@AllArgsConstructor
 public class TemplateService {
 
     private final TemplateRepository templates;
 
     private final SettingRepository settings;
-
-    @Autowired
-    public TemplateService(TemplateRepository templates, final SettingRepository settings) {
-        this.templates = templates;
-        this.settings = settings;
-    }
-
 
     public List<Template> findAll() {
         return Lists.newArrayList(this.templates.findAll());
@@ -41,7 +35,6 @@ public class TemplateService {
     public Template save(Template template) {
         return this.templates.save(template);
     }
-
 
     public Template getById(int id) {
         Optional<Template> result = this.templates.findById(id);

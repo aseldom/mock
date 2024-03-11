@@ -36,7 +36,7 @@ public class ForgetAction implements Action {
         String chatId = message.getChatId().toString();
         TelegramUser telegramUser = telegramUserService.findByChatId(message.getChatId().intValue());
         if (telegramUser == null) {
-            text = String.format("Для Вашего аккаунта регистрация не выполнена. %s/start", sl);
+            text = String.format("Для Вашего аккаунта регистрация не выполнена.%s/start", sl);
             return send(chatId, text, bindingBy);
         }
 
@@ -48,7 +48,7 @@ public class ForgetAction implements Action {
                     .block();
         } catch (Exception e) {
             log.error("WebClient doGet error: {}", e.getMessage());
-            text = String.format("Сервис не доступен попробуйте позже %s/start", sl);
+            text = String.format("Сервис не доступен попробуйте позже%s/start", sl);
             return send(chatId, text, bindingBy);
         }
         return send(chatId, "Новый пароль: " + password, bindingBy);

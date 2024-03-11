@@ -39,7 +39,7 @@ public class RegAction implements Action {
         String chatId = message.getChatId().toString();
         TelegramUser telegramUser = telegramUserService.findByChatId(message.getChatId().intValue());
         if (telegramUser != null) {
-            text = String.format("Для Вашего аккаунта регистрация уже выполнена. %s/start", sl);
+            text = String.format("Для Вашего аккаунта регистрация уже выполнена.%s/start", sl);
             return new SendMessage(chatId, text);
         }
         text = "Введите email для регистрации:";
@@ -89,9 +89,9 @@ public class RegAction implements Action {
             return new SendMessage(chatId, text);
         }
 
-        int userId = (int) mapObject.get("person").get("id");
+        var userId = (int) mapObject.get("person").get("id");
 
-        telegramUserService.save(new TelegramUser(0, userId, Integer.parseInt(chatId)));
+//        telegramUserService.save(new TelegramUser(0, userId, Integer.parseInt(chatId)));
 
         text = "Вы зарегистрированы: " + sl
                 + "Логин: " + email + sl

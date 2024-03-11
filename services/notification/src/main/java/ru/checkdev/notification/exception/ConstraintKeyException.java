@@ -5,5 +5,4 @@ public class ConstraintKeyException extends RuntimeException {
     public ConstraintKeyException(String message) {
         super(message);
     }
-
 }

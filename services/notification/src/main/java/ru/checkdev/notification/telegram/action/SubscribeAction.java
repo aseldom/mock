@@ -7,8 +7,8 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import ru.checkdev.notification.domain.PersonDTO;
 import ru.checkdev.notification.domain.TelegramUser;
-import ru.checkdev.notification.exception.ConstraintKeyException;
 import ru.checkdev.notification.service.TelegramUserService;
+import ru.checkdev.notification.exception.ConstraintKeyException;
 import ru.checkdev.notification.telegram.service.TgAuthCallWebClint;
 import ru.checkdev.notification.telegram.service.TgMockCallWebClint;
 

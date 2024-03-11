@@ -21,7 +21,7 @@ import java.util.Map;
 public class UnsubscribeAction implements Action {
 
     private final String sl = System.lineSeparator();
-    private final TgMockCallWebClint tgMockCallWebClint;
+    private final TgMockCallWebClint tgMockCallWebClient;
     private final String urlUserSubscribe;
 
     @Override
@@ -29,7 +29,7 @@ public class UnsubscribeAction implements Action {
         String text;
         String chatId = message.getChatId().toString();
         try {
-            int res = (int) tgMockCallWebClint.doDelete(urlUserSubscribe + "/" + message.getChatId()).block();
+            int res = (int) tgMockCallWebClient.doDelete(urlUserSubscribe + "/" + message.getChatId()).block();
             if (res != 0) {
                 text = "Отписка успешно выполнена";
                 return send(chatId, text, bindingBy);
