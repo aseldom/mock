@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.telegram.telegrambots.meta.api.methods.BotApiMethod;
 import org.telegram.telegrambots.meta.api.objects.Message;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
 import reactor.core.publisher.Mono;
 import ru.checkdev.notification.domain.TelegramUser;
 import ru.checkdev.notification.service.TelegramUserService;
@@ -68,8 +67,10 @@ class CheckActionTest {
         when(telegramUserServiceMock.findByChatId(anyInt())).thenReturn(new TelegramUser());
         when(tgAuthCallWebClintMock.doGetPerson(anyString())).thenReturn(Mono.just(outerMap));
 
-        String expected = "ФИО: Alex" + sl +
-                "Email: email@email.org" + sl;
+        String expected = "ФИО: Alex"
+                + sl
+                + "Email: email@email.org"
+                + sl;
         BotApiMethod<Message> res = checkAction.handle(messageMock, bindingBy);
         assertThat(res.toString()).contains(expected);
     }

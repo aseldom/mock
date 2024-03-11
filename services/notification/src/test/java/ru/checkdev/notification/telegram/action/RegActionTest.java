@@ -11,7 +11,6 @@ import ru.checkdev.notification.service.TelegramUserService;
 import ru.checkdev.notification.telegram.config.TgConfig;
 import ru.checkdev.notification.telegram.service.TgAuthCallWebClint;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -84,7 +83,7 @@ class RegActionTest {
     }
 
     @Test
-    public void whenServerReturnedERROR_OBJECTThenReturnErrorMessage() {
+    public void whenServerReturnedErrorObjectThenReturnErrorMessage() {
         String email = "email@email.org";
         HashMap<String, HashMap<String, String>> ret = new HashMap<>();
         ret.put("error", new HashMap<>());
