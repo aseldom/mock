@@ -24,11 +24,9 @@ class SubscribeActionTest {
 
     private TelegramUserService telegramUserServiceMock;
     private TgAuthCallWebClint tgAuthCallWebClintMock;
-    private TgMockCallWebClint tgMockCallWebClint;;
+    private TgMockCallWebClint tgMockCallWebClint;
 
     private Message messageMock = mock(Message.class);
-
-    private TgConfig tgConfigMock = mock(TgConfig.class);
 
     private HashMap<String, String> bindingBy = new HashMap<>();
 
@@ -96,7 +94,7 @@ class SubscribeActionTest {
     }
 
     @Test
-    public void whenAuthServiceisUnavalableThenReturnWarningMessage() {
+    public void whenAuthServiceIsUnavailableThenReturnWarningMessage() {
         long chatId = 1L;
         String email = "email.email.org";
         when(telegramUserServiceMock.findByChatId(anyInt())).thenReturn(new TelegramUser());
