@@ -89,10 +89,6 @@ public class RegAction implements Action {
             return new SendMessage(chatId, text);
         }
 
-        var userId = (int) mapObject.get("person").get("id");
-
-//        telegramUserService.save(new TelegramUser(0, userId, Integer.parseInt(chatId)));
-
         text = "Вы зарегистрированы: " + sl
                 + "Логин: " + email + sl
                 + "Пароль: " + password + sl

@@ -9,11 +9,9 @@ import reactor.core.publisher.Mono;
 import ru.checkdev.notification.domain.PersonDTO;
 import ru.checkdev.notification.domain.TelegramUser;
 import ru.checkdev.notification.service.TelegramUserService;
-import ru.checkdev.notification.telegram.config.TgConfig;
 import ru.checkdev.notification.telegram.service.TgAuthCallWebClint;
 
 import java.util.HashMap;
-import java.util.Map;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.Mockito.*;
@@ -26,8 +24,6 @@ class ForgetActionTest {
     private TgAuthCallWebClint tgAuthCallWebClintMock;
 
     private Message messageMock;
-
-    private TgConfig tgConfig = mock(TgConfig.class);
 
     private HashMap<String, String> bindingBy = new HashMap<>();
 
